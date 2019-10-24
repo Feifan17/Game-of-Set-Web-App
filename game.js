@@ -5,6 +5,19 @@ var board =[];
 var selection = [];
 fillBoard(board, deck);
 
+/* for debugging */
+// console.log(deck);
+// console.log(board);
+// console.log(selection);
+
+$("#start-btn").click(function() {
+  gameStart(deck, board, selection);
+  /* for debugging */
+  // console.log(deck);
+  // console.log(board);
+  // console.log(selection);
+});
+
 $(".btn").click(function() {
   //get the card attributes
   let selectedCard = $(this).find("img").attr("src");
@@ -23,8 +36,6 @@ $(".btn").click(function() {
       //call isSet();
     }
   }
-  console.log(selection);
+  /* for debugging */
+  // console.log(selection);
 });
-
-// console.log(deck);
-// console.log(board);

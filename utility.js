@@ -9,8 +9,11 @@ function unselectCard(card) {
 }
 
 /*start the game*/
-function gameStart() {
-  fillBoard(deck);
+function gameStart(deck, board, selection) {
+  deck = generateCards();
+  board = [];
+  selection = [];
+  resetBoard(board, deck);
 }
 
 /*create a deck*/
@@ -44,6 +47,18 @@ function fillBoard(board, deck) {
       $('#btn' + i).prepend('<img class = "card" src="images/' + number + '_' + shape + '_' + fill + '_' + color + '.png"/>');
       board.push(card);
     }
+}
+
+function resetBoard(board, deck) {
+  for(var i = 1; i <= 12; i++) {
+    let card = deck.shift();
+    let number = card.number;
+    let shape = card.shape;
+    let fill = card.fill;
+    let color = card.color;
+    $('#btn' + i).find("img").attr("src", 'images/' + number + '_' + shape + '_' + fill + '_' + color + '.png');
+    board.push(card);
+  }
 }
 
 /*validate if the three cards form a set*/
