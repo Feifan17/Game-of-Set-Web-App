@@ -1,0 +1,59 @@
+body {
+  text-align: center;
+  background-color: #3c70a4;
+  color: #FEF2BF;
+}
+
+h1 {
+  font-family: 'Satisfy', cursive;
+  font-size: 4rem;
+}
+
+h2 {
+  font-family: 'Anton', sans-serif;
+  font-size: 2rem;
+
+}
+
+#start-btn {
+  padding-bottom: 125px;
+}
+
+#hint {
+  padding-bottom: 100px;
+}
+
+#scoreboard {
+  padding-bottom: 240px;
+}
+
+.placeholder {
+  color: #3c70a4;
+}
+
+.card {
+  height: 100px;
+  width: 80px;
+  border-radius: 20%;
+}
+
+.container {
+  display: inline-block;
+  width: 30%;
+  margin: auto;
+
+}
+
+.btn {
+  margin: 10px;
+  display: inline-block;
+  height: 100px;
+  width: 80px;
+  border: 7px solid black;
+  border-radius: 20%;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
