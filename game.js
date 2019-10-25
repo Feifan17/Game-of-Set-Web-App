@@ -32,13 +32,13 @@ $(".btn").click(function() {
       selectCard(this);
       selection.push(pattern);
     }
-    else {
+    if(selection.length == 3) {
       let test = isSet(selection);
       if(test) {
-        console.alert("This is a set!");
+        alert("This is a set!");
       }
       else {
-        console.alert("This is not a set!");
+        alert("This is not a set!");
       }
       selection = [];
     }
