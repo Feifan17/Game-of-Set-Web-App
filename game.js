@@ -35,10 +35,10 @@ $(".btn").click(function() {
     else {
       let test = isSet(selection);
       if(test) {
-        console.log("This is a set!");
+        console.alert("This is a set!");
       }
       else {
-        console.log("This is not a set!");
+        console.alert("This is not a set!");
       }
       selection = [];
     }
