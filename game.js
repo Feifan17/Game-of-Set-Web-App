@@ -33,7 +33,14 @@ $(".btn").click(function() {
       selection.push(pattern);
     }
     else {
-      //call isSet();
+      let test = isSet(selection);
+      if(test) {
+        console.log("This is a set!");
+      }
+      else {
+        console.log("This is not a set!");
+      }
+      selection = [];
     }
   }
   /* for debugging */
