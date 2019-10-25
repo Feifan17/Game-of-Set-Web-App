@@ -22,15 +22,18 @@ $(".btn").click(function() {
   //get the card attributes
   let selectedCard = $(this).find("img").attr("src");
   let pattern = selectedCard.substring(7, selectedCard.length - 4).split("_");
+  let card = {number: pattern[0], shape: pattern[1], fill: pattern[2], color: pattern[3]};
 
   if($(this).hasClass("pressed")) {
     unselectCard(this);
-    selection.splice(selection.indexOf(pattern));
+    selection.splice(selection.indexOf(card));
+    //console.log(selection);
   }
   else {
     if(selection.length < 3) {
       selectCard(this);
-      selection.push(pattern);
+      selection.push(card);
+      //console.log(selection);
     }
     if(selection.length == 3) {
       let test = isSet(selection);
