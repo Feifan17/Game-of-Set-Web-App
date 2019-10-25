@@ -61,7 +61,65 @@ function resetBoard(board, deck) {
   }
 }
 
+function compare_value(card1_attr, card2_attr, card3_attr){
+  var check = false;
+  if ((card1_attr===card2_attr && card2_attr === card3_attr) || 
+  ( card1_attr !== card2_attr && card2_attr !== card3_attr && card1_attr !== card3_attr)){
+    check = true;
+  }
+  return check;
+}
+
 /*validate if the three cards form a set*/
 function isSet(selection) {
+  var check = true;
+  //console.log(check);
+  //console.log(selection);
+  if (!compare_value(selection[0].number,selection[1].number,selection[2].number)){
+    check = false;
+  }
+  if (!compare_value(selection[0].color,selection[1].color,selection[2].color)){
+    
+    check = false;
+  }
+  if (!compare_value(selection[0].fill,selection[1].fill,selection[2].fill)){
+    
+    check = false;
+  }
+  if (!compare_value(selection[0].shape,selection[1].shape,selection[2].shape)){
+    
+    check = false;
+  }
+  //console.log(selection);
+  //console.log(check);
+  return check;
+}
+
+
+//hint for player 
+function hint(board){
+  var hint_arr = [];
+  for(var i = 0; i < board.length-2; i++){
+    for(var j = i +1; i < board.length -1; j++){
+      for (var k = j +1; k < board.length; k++){
+       
+          hint_arr.push(board[i],board[j],board[k]);
+          if(isSet(hint_arr)){
+            //console.log(isSet(hint_arr));
+            console.log(hint_arr);
+            //$("#"+i).effect( "shake", {times:4}, 1000 );
+
+            set = true;
+            hint_arr = [];
+            return 0;
+          }else{
+            console.log(false);
+          }
+        
+      }
+    }
+  }
 
 }
+
+

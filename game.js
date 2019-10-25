@@ -7,8 +7,9 @@ fillBoard(board, deck);
 
 /* for debugging */
 // console.log(deck);
-// console.log(board);
-// console.log(selection);
+ console.log(board);
+console.log(selection);
+
 
 $("#start-btn").click(function() {
   gameStart(deck, board, selection);
@@ -17,6 +18,16 @@ $("#start-btn").click(function() {
   // console.log(board);
   // console.log(selection);
 });
+
+$("#hint").click(function() {
+  hint(board);
+  /* for debugging */
+  // console.log(deck);
+  // console.log(board);
+  // console.log(selection);
+});
+
+
 
 $(".btn").click(function() {
   //get the card attributes
