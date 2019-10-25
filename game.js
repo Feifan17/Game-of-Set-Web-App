@@ -21,7 +21,30 @@ $("#start-btn").click(function() {
 });
 
 $("#hint").click(function() {
-  hint(board);
+  let hint_arr = hint(board);
+  console.log(hint_arr);
+
+  if(hint_arr.length > 0) {
+    let card1 = 'images/' + hint_arr[0].number + '_' + hint_arr[0].shape + '_' + hint_arr[0].fill + '_' + hint_arr[0].color + '.png';
+    let card2 = 'images/' + hint_arr[1].number + '_' + hint_arr[1].shape + '_' + hint_arr[1].fill + '_' + hint_arr[1].color + '.png';
+    let card3 = 'images/' + hint_arr[2].number + '_' + hint_arr[2].shape + '_' + hint_arr[2].fill + '_' + hint_arr[2].color + '.png';
+
+    $("img[src='" + card1 + "']").parent().toggleClass("hint");
+    $("img[src='" + card2 + "']").parent().toggleClass("hint");
+    $("img[src='" + card3 + "']").parent().toggleClass("hint");
+    setTimeout(function(){
+      $("img[src='" + card1 + "']").removeClass("hint");
+    },500);
+    setTimeout(function(){
+      $("img[src='" + card2 + "']").removeClass("hint");
+    },500);
+    setTimeout(function(){
+      $("img[src='" + card3 + "']").removeClass("hint");
+    },500);
+  }
+  else {
+    alert("The board has no set!");
+  }
   /* for debugging */
   // console.log(deck);
   // console.log(board);

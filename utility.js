@@ -103,7 +103,6 @@ function hint(board) {
       for(var k = j + 1; k < board.length; k++) {
           hint_arr.push(board[i],board[j],board[k]);
           if(isSet(hint_arr)) {
-            console.log(hint_arr);
             //$("#"+i).effect( "shake", {times:4}, 1000 );
             return hint_arr;
           }
