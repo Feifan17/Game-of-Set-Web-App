@@ -9,16 +9,18 @@ function unselectCard(card) {
 }
 
 /*start the game*/
-function gameStart(deck, board, selection) {
+function gameStart(deck, board, selection, score) {
   deck = generateCards();
   board = [];
   selection = [];
+  score = 0;
   resetBoard(board, deck);
 }
 
 /*create a deck*/
 function generateCards() {
   var cards = [];
+
   let numbers = ['1', '2', '3'];
   let colors = ['red', 'purple', 'green'];
   let fills = ['solid', 'striped', 'open'];
@@ -49,7 +51,9 @@ function fillBoard(board, deck) {
     }
 }
 
-function resetBoard(board, deck) {
+function resetBoard(board, deck, score) {
+  score = 0;
+  document.getElementById('score').innerHTML= score;
   for(var i = 1; i <= 12; i++) {
     let card = deck.shift();
     let number = card.number;

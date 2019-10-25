@@ -3,6 +3,7 @@
 var deck = generateCards();
 var board =[];
 var selection = [];
+var score = 0;
 fillBoard(board, deck);
 
 /* for debugging */
@@ -50,6 +51,8 @@ $(".btn").click(function() {
       let test = isSet(selection);
       if(test) {
         alert("This is a set!");
+        score++;
+        document.getElementById('score').innerHTML= score;
       }
       else {
         alert("This is not a set!");
