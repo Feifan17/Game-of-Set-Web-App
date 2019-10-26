@@ -1,4 +1,7 @@
 /*jshint esversion: 6 */
+var seconds = 0, minutes = 0, hours = 0;
+var t;
+var stopwatch = document.getElementById('stopwatch');
 
 function selectCard(card) {
   $(card).addClass("pressed");
@@ -16,7 +19,35 @@ function gameStart(deck, board, selection, score) {
   score = 0;
   resetBoard(board, deck);
 }
+function startStopwatch(){
+  function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    stopwatch.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+    timer();
+  }
+  function timer() {
+    t = setTimeout(add, 1000);
+}
+timer();
+}
 
+function pauseStopwatch(){
+  clearTimeout(t);
+}
+
+function clearStopwatch(){
+  stopwatch.textContent = "00:00:00";
+  seconds = 0; minutes = 0; hours = 0;
+  pauseStopwatch();
+}
 /*create a deck*/
 function generateCards() {
   var cards = [];

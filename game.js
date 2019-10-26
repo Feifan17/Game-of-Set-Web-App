@@ -14,6 +14,8 @@ console.log(selection);
 
 $("#start-btn").click(function() {
   gameStart(deck, board, selection);
+  clearStopwatch();
+  startStopwatch();
   /* for debugging */
   // console.log(deck);
   // console.log(board);
