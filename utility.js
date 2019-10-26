@@ -71,13 +71,13 @@ function generateCards() {
 
 /*fill the board with 12 cards*/
 function fillBoard(board, deck) {
-    for(var i = 1; i <= 12; i++) {
+    for(var i = 0; i < 12; i++) {
       let card = deck.shift();
       let number = card.number;
       let shape = card.shape;
       let fill = card.fill;
       let color = card.color;
-      $('#btn' + i).prepend('<img class = "card" src="images/' + number + '_' + shape + '_' + fill + '_' + color + '.png"/>');
+      $('#' + i).prepend('<img class = "card" src="images/' + number + '_' + shape + '_' + fill + '_' + color + '.png"/>');
       board.push(card);
     }
 }
@@ -85,13 +85,13 @@ function fillBoard(board, deck) {
 function resetBoard(board, deck, score) {
   score = 0;
   document.getElementById('score').innerHTML= score;
-  for(var i = 1; i <= 12; i++) {
+  for(var i = 0; i < 12; i++) {
     let card = deck.shift();
     let number = card.number;
     let shape = card.shape;
     let fill = card.fill;
     let color = card.color;
-    $('#btn' + i).find("img").attr("src", 'images/' + number + '_' + shape + '_' + fill + '_' + color + '.png');
+    $('#' + i).find("img").attr("src", 'images/' + number + '_' + shape + '_' + fill + '_' + color + '.png');
     board.push(card);
   }
 }
@@ -105,19 +105,24 @@ function compare_value(card1_attr, card2_attr, card3_attr){
 }
 
 /*validate if the three cards form a set*/
-function isSet(selection) {
+function isSet(selection, board) {
   //console.log(check);
   //console.log(selection);
-  if (!compare_value(selection[0].number,selection[1].number,selection[2].number)){
+  let card1 = board[parseInt(selection[0], 10)];
+  let card2 = board[parseInt(selection[1], 10)];
+  let card3 = board[parseInt(selection[2], 10)];
+
+
+  if (!compare_value(card1.number,card2.number,card3.number)){
     return false;
   }
-  else if (!compare_value(selection[0].color,selection[1].color,selection[2].color)){
+  else if (!compare_value(card1.color,card2.color,card3.color)){
     return false;
   }
-  else if (!compare_value(selection[0].fill,selection[1].fill,selection[2].fill)){
+  else if (!compare_value(card1.fill,card2.fill,card3.fill)){
     return false;
   }
-  else if (!compare_value(selection[0].shape,selection[1].shape,selection[2].shape)){
+  else if (!compare_value(card1.shape,card2.shape,card3.shape)){
     return false;
   }
   //console.log(selection);
@@ -125,6 +130,38 @@ function isSet(selection) {
   return true;
 }
 
+function replaceThree(board, deck, selection) {
+
+  let card1 = deck.shift();
+  let card2 = deck.shift();
+  let card3 = deck.shift();
+
+  let i1 = parseInt(selection[0], 10);
+  let i2 = parseInt(selection[1], 10);
+  let i3 = parseInt(selection[2], 10);
+
+  let old1 = 'images/' + board[i1].number + '_' + board[i1].shape + '_' + board[i1].fill + '_' + board[i1].color + '.png';
+  let old2 = 'images/' + board[i2].number + '_' + board[i2].shape + '_' + board[i2].fill + '_' + board[i2].color + '.png';
+  let old3 = 'images/' + board[i3].number + '_' + board[i3].shape + '_' + board[i3].fill + '_' + board[i3].color + '.png';
+
+  board[i1] = card1;
+  board[i2] = card2;
+  board[i3] = card3;
+
+  let new1 = 'images/' + card1.number + '_' + card1.shape + '_' + card1.fill + '_' + card1.color + '.png';
+  let new2 = 'images/' + card2.number + '_' + card2.shape + '_' + card2.fill + '_' + card2.color + '.png';
+  let new3 = 'images/' + card3.number + '_' + card3.shape + '_' + card3.fill + '_' + card3.color + '.png';
+
+  $("img[src='" + old1 + "']").parent().removeClass("pressed");
+  $("img[src='" + old2 + "']").parent().removeClass("pressed");
+  $("img[src='" + old3 + "']").parent().removeClass("pressed");
+
+  $("img[src='" + old1 + "']").attr("src", new1);
+  $("img[src='" + old2 + "']").attr("src", new2);
+  $("img[src='" + old3 + "']").attr("src", new3);
+
+
+}
 
 //hint for player
 function hint(board) {
@@ -132,8 +169,8 @@ function hint(board) {
   for(var i = 0; i < board.length - 2; i++) {
     for(var j = i + 1; j < board.length - 1; j++) {
       for(var k = j + 1; k < board.length; k++) {
-          hint_arr.push(board[i],board[j],board[k]);
-          if(isSet(hint_arr)) {
+          hint_arr.push(i.toString(), j.toString(), k.toString());
+          if(isSet(hint_arr, board)) {
             //$("#"+i).effect( "shake", {times:4}, 1000 );
             return hint_arr;
           }
