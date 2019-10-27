@@ -5,26 +5,37 @@ var board =[];
 var selection = [];
 var score = 0;
 fillBoard(board, deck);
-
+var remain = deck.length;
 /* for debugging */
 // console.log(deck);
+// console.log(board);
+// console.log(selection);
 
-
-
-$("#start-btn").click(function() {
-  gameStart(deck, board, selection);
-  clearStopwatch();
-  startStopwatch();
+$("#restart-btn").click(function() {
+  playSound("restart");
+  $(".pressed").removeClass("pressed");
+  score = 0;
+  document.getElementById('score').innerHTML= score;
+  deck = generateCards();
+  board = [];
+  selection = [];
+  resetBoard(board, deck);
+  remain = deck.length;
+  document.getElementById('remain').innerHTML= remain;
+  // clearStopwatch();
+  // startStopwatch();
   /* for debugging */
+  // console.log(score);
   // console.log(deck);
   // console.log(board);
   // console.log(selection);
 });
 
 $("#hint").click(function() {
-
+  playSound("hint");
   let hint_arr = hint(board);
-  console.log(hint_arr);
+  /* for debugging */
+  // console.log(hint_arr);
 
   if(hint_arr.length > 0) {
 
@@ -44,9 +55,27 @@ $("#hint").click(function() {
     setTimeout(function(){
       $("img[src='" + card3 + "']").parent().removeClass("hint");
     },200);
+
   }
   else {
-    alert("The board has no set!");
+    alert("No set exists. The board will be reset!");
+    if(deck.length > 0) {
+      deck = deck.concat(board);
+      deck = _.shuffle(deck);
+      board = [];
+      resetBoard(board, deck);
+    }
+    else {
+      alert("Game over!!");
+      score = 0;
+      document.getElementById('score').innerHTML= score;
+      deck = generateCards();
+      board = [];
+      selection = [];
+      resetBoard(board, deck);
+      remain = deck.length;
+      document.getElementById('remain').innerHTML= remain;
+    }
   }
   /* for debugging */
   // console.log(deck);
@@ -73,18 +102,23 @@ $(".btn").click(function() {
     if(selection.length == 3) {
       let test = isSet(selection, board);
       if(test) {
-        alert("This is a set!");
+        playSound("right");
         score++;
         document.getElementById('score').innerHTML= score;
         replaceThree(board, deck, selection);
+        remain = deck.length;
+        document.getElementById('remain').innerHTML= remain;
+        console.log(deck);
+        console.log(board);
+        console.log(selection);
 
       }
       else {
-        alert("This is not a set!");
+        playSound("wrong");
       }
       selection = [];
+      $(".pressed").removeClass("pressed");
     }
   }
-  /* for debugging */
-  // console.log(selection);
+  
 });

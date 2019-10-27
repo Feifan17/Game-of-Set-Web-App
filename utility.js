@@ -3,22 +3,20 @@ var seconds = 0, minutes = 0, hours = 0;
 var t;
 var stopwatch = document.getElementById('stopwatch');
 
+/*add effect for selected card*/
 function selectCard(card) {
   $(card).addClass("pressed");
+  playSound("pressed");
+
 }
 
+/*remove effect for selected card*/
 function unselectCard(card) {
   $(card).removeClass("pressed");
+  playSound("cancel");
 }
 
-/*start the game*/
-function gameStart(deck, board, selection, score) {
-  deck = generateCards();
-  board = [];
-  selection = [];
-  score = 0;
-  resetBoard(board, deck);
-}
+
 function startStopwatch(){
   function add() {
     seconds++;
@@ -48,6 +46,7 @@ function clearStopwatch(){
   seconds = 0; minutes = 0; hours = 0;
   pauseStopwatch();
 }
+
 /*create a deck*/
 function generateCards() {
   var cards = [];
@@ -82,9 +81,9 @@ function fillBoard(board, deck) {
     }
 }
 
-function resetBoard(board, deck, score) {
-  score = 0;
-  document.getElementById('score').innerHTML= score;
+/*reset the board with 12 cards*/
+function resetBoard(board, deck) {
+
   for(var i = 0; i < 12; i++) {
     let card = deck.shift();
     let number = card.number;
@@ -94,8 +93,10 @@ function resetBoard(board, deck, score) {
     $('#' + i).find("img").attr("src", 'images/' + number + '_' + shape + '_' + fill + '_' + color + '.png');
     board.push(card);
   }
+
 }
 
+/*compare attributes of cards*/
 function compare_value(card1_attr, card2_attr, card3_attr){
   var check = false;
   if ((card1_attr === card2_attr && card2_attr === card3_attr) || (card1_attr !== card2_attr && card2_attr !== card3_attr && card1_attr !== card3_attr)){
@@ -106,12 +107,14 @@ function compare_value(card1_attr, card2_attr, card3_attr){
 
 /*validate if the three cards form a set*/
 function isSet(selection, board) {
-  //console.log(check);
-  //console.log(selection);
+
   let card1 = board[parseInt(selection[0], 10)];
   let card2 = board[parseInt(selection[1], 10)];
   let card3 = board[parseInt(selection[2], 10)];
 
+  if(card1 == null || card2 == null || card3 == null) {
+    return false;
+  }
 
   if (!compare_value(card1.number,card2.number,card3.number)){
     return false;
@@ -125,16 +128,12 @@ function isSet(selection, board) {
   else if (!compare_value(card1.shape,card2.shape,card3.shape)){
     return false;
   }
-  //console.log(selection);
-  //console.log(check);
+
   return true;
 }
 
+/*replace three cards on the board*/
 function replaceThree(board, deck, selection) {
-
-  let card1 = deck.shift();
-  let card2 = deck.shift();
-  let card3 = deck.shift();
 
   let i1 = parseInt(selection[0], 10);
   let i2 = parseInt(selection[1], 10);
@@ -144,26 +143,41 @@ function replaceThree(board, deck, selection) {
   let old2 = 'images/' + board[i2].number + '_' + board[i2].shape + '_' + board[i2].fill + '_' + board[i2].color + '.png';
   let old3 = 'images/' + board[i3].number + '_' + board[i3].shape + '_' + board[i3].fill + '_' + board[i3].color + '.png';
 
-  board[i1] = card1;
-  board[i2] = card2;
-  board[i3] = card3;
-
-  let new1 = 'images/' + card1.number + '_' + card1.shape + '_' + card1.fill + '_' + card1.color + '.png';
-  let new2 = 'images/' + card2.number + '_' + card2.shape + '_' + card2.fill + '_' + card2.color + '.png';
-  let new3 = 'images/' + card3.number + '_' + card3.shape + '_' + card3.fill + '_' + card3.color + '.png';
-
   $("img[src='" + old1 + "']").parent().removeClass("pressed");
   $("img[src='" + old2 + "']").parent().removeClass("pressed");
   $("img[src='" + old3 + "']").parent().removeClass("pressed");
 
-  $("img[src='" + old1 + "']").attr("src", new1);
-  $("img[src='" + old2 + "']").attr("src", new2);
-  $("img[src='" + old3 + "']").attr("src", new3);
+  if(deck.length > 0) {
 
+    let card1 = deck.shift();
+    let card2 = deck.shift();
+    let card3 = deck.shift();
+
+    board[i1] = card1;
+    board[i2] = card2;
+    board[i3] = card3;
+
+    let new1 = 'images/' + card1.number + '_' + card1.shape + '_' + card1.fill + '_' + card1.color + '.png';
+    let new2 = 'images/' + card2.number + '_' + card2.shape + '_' + card2.fill + '_' + card2.color + '.png';
+    let new3 = 'images/' + card3.number + '_' + card3.shape + '_' + card3.fill + '_' + card3.color + '.png';
+
+    $("img[src='" + old1 + "']").attr("src", new1);
+    $("img[src='" + old2 + "']").attr("src", new2);
+    $("img[src='" + old3 + "']").attr("src", new3);
+  }
+  else {
+    board[i1] = null;
+    board[i2] = null;
+    board[i3] = null;
+
+    $("img[src='" + old1 + "']").attr("src", "images/X.png");
+    $("img[src='" + old2 + "']").attr("src", "images/X.png");
+    $("img[src='" + old3 + "']").attr("src", "images/X.png");
+  }
 
 }
 
-//hint for player
+/*generate a hint for the player*/
 function hint(board) {
   var hint_arr = [];
   for(var i = 0; i < board.length - 2; i++) {
@@ -179,4 +193,42 @@ function hint(board) {
     }
   }
   return hint_arr;
+}
+
+/*play sound when buttons get clicked*/
+function playSound(sound) {
+  switch (sound) {
+    case "right":
+      var right = new Audio("sounds/right.mp3");
+      right.play();
+      break;
+
+    case "wrong":
+      var wrong = new Audio("sounds/wrong.mp3");
+      wrong.play();
+      break;
+
+    case "pressed":
+      var pressed = new Audio("sounds/pressed.mp3");
+      pressed.play();
+      break;
+
+    case "cancel":
+      var cancel = new Audio("sounds/cancel.mp3");
+      cancel.play();
+      break;
+
+    case "restart":
+      var restart = new Audio("sounds/restart.mp3");
+      restart.play();
+      break;
+
+    case "hint":
+      var hint = new Audio("sounds/hint.mp3");
+      hint.play();
+      break;
+
+    default:
+
+  }
 }
