@@ -4,6 +4,7 @@ body {
   color: #FEF2BF;
 }
 
+/* style titles */
 h1 {
   font-family: 'Satisfy', cursive;
   font-size: 4rem;
@@ -15,7 +16,7 @@ h2 {
 
 }
 
-
+/* hint cards animation */
 .hint {animation: wiggle 0.5s}
 
 @keyframes wiggle {
@@ -25,6 +26,7 @@ h2 {
   100%{transform: rotate(0deg)}
 }
 
+/* style restart button */
 #restart-btn {
   display: block;
   width: 20%;
@@ -42,6 +44,7 @@ h2 {
 
 }
 
+/* style hint button */
 #hint {
   display: block;
   width: 20%;
@@ -58,6 +61,7 @@ h2 {
   cursor: pointer;
 }
 
+/* style help button */
 #help {
   display: block;
   width: 20%;
@@ -73,10 +77,12 @@ h2 {
   cursor: pointer;
 }
 
-#restart-btn:hover, #hint:hover, #help:hover {
+/* add hover effect for buttons*/
+#restart-btn:hover, #hint:hover, #help:hover, .btn:hover{
   box-shadow: 0 0 30px white;
 }
 
+/* style scoreboard*/
 #score {
   background-color: white;
   font-size: 3rem;
@@ -90,6 +96,7 @@ h2 {
   border-radius: 30%;
 }
 
+/* style remain card count*/
 #remain {
   background-color: white;
   font-size: 3rem;
@@ -106,6 +113,7 @@ h2 {
   visibility: hidden;
 }
 
+/* style card images*/
 .card {
   height: 100%;
   width: 100%;
@@ -119,6 +127,7 @@ h2 {
 
 }
 
+/* style card buttons*/
 .btn {
   margin: 10px;
   display: inline-block;
@@ -134,10 +143,7 @@ h2 {
   margin: 0 auto;
 }
 
-.btn:hover {
-  box-shadow: 0 0 30px white;
-}
-
+/* add pressed effect for card buttons*/
 .pressed {
   box-shadow: 0 0 30px white;
   background-color: grey;
@@ -147,6 +153,7 @@ h2 {
   visibility: hidden;
 }
 
+/* style instruction box*/
 #description{
   text-align: left;
   display: inline-block;
