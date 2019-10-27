@@ -17,12 +17,12 @@ In this project, the Code Fellas team redesigned the [Game of Set](https://githu
 The game starts from 12 cards. Each card has 4 attributes. Each attribute has 3 values:
 
     Number:     1           2           3
-    Colour:     red         green       purple
+    Color:     red         green       purple
     Fill:       solid       stripe      empty
     Shape:      diamond     squiggle    pill
-    
+
     There are totally 81 cards in the deck and each combination of features appears as a card precisely once.
-    
+
     Rules:
 
     A player needs to identify a set of 3 cards satisfying all of these conditions:
@@ -30,16 +30,16 @@ The game starts from 12 cards. Each card has 4 attributes. Each attribute has 3 
     1. They all have the same number or have three different numbers.
     2. They all have the same shape or have three different shapes.
     3. They all have the same fill or have three different fills.
-    3. They all have the same colour or have three different colours.
+    3. They all have the same color or have three different colors.
 
     For example, the following cards form a set:
 
     1     green   stripe    diamond
     2     green   solid     diamond
     3     green   empty     diamond
-    
+
     the following cards don't form a set:
-    
+
     2     green   stripe    diamond
     2     green   solid     diamond
     3     green   empty     diamond
@@ -75,21 +75,21 @@ The game starts from 12 cards. Each card has 4 attributes. Each attribute has 3 
 ## References
 Sound effects obtained from https://www.zapsplat.com:
 
-Right: Game sound, climbing mallet, ascend 5
+right.mp3: Game sound, climbing mallet, ascend 5
 
-Wrong: Classic game sound, one up, rising, positive. Version 3
+wrong.mp3: Classic game sound, one up, rising, positive. Version 3
 
-Pressed: Game tone, sci-fi, button, select or menu sound 1
+pressed.mp3: Game tone, sci-fi, button, select or menu sound 1
 
-Cancel: Game, menu item select 3
+cancel.mp3: Game, menu item select 3
 
-Restart: Warm, soft digital game tone with a positive feel, could be used for selection noise 50
+restart.mp3: Warm, soft digital game tone with a positive feel, could be used for selection noise 50
 
-Hint: Warm, soft digital game tone with a positive feel, could be used for selection noise 46
+hint.mp3: Warm, soft digital game tone with a positive feel, could be used for selection noise 46
 
-Help: Game sound, collect single coin 10
+help.mp3: Game sound, collect single coin 10
 
 Images reference:
-[yellow X](https://en.wikipedia.org/wiki/File:Yellow_x.svg)
+[X.png](https://en.wikipedia.org/wiki/File:Yellow_x.svg)
 
 [card images](https://geekandsundry.com/the-card-game-that-puzzled-mathematicians-for-decades/)
