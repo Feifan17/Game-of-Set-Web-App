@@ -13,6 +13,37 @@ In this project, the Code Fellas team redesigned the [Game of Set](https://githu
 * Sound Effect
 * Timer
 
+## Game Rules
+The game starts from 12 cards. Each card has 4 attributes. Each attribute has 3 values:
+
+    Number:     1           2           3
+    Colour:     red         green       purple
+    Fill:       solid       stripe      empty
+    Shape:      diamond     squiggle    pill
+    
+    There are totally 81 cards in the deck and each combination of features appears as a card precisely once.
+    
+    Rules:
+
+    A player needs to identify a set of 3 cards satisfying all of these conditions:
+
+    1. They all have the same number or have three different numbers.
+    2. They all have the same shape or have three different shapes.
+    3. They all have the same fill or have three different fills.
+    3. They all have the same colour or have three different colours.
+
+    For example, the following cards form a set:
+
+    1     green   stripe    diamond
+    2     green   solid     diamond
+    3     green   empty     diamond
+    
+    the following cards don't form a set:
+    
+    2     green   stripe    diamond
+    2     green   solid     diamond
+    3     green   empty     diamond
+
 ## Instructions
 
 ### To Run the Game:
@@ -60,4 +91,5 @@ Help: Game sound, collect single coin 10
 
 Images reference:
 [yellow X](https://en.wikipedia.org/wiki/File:Yellow_x.svg)
+
 [card images](https://geekandsundry.com/the-card-game-that-puzzled-mathematicians-for-decades/)
