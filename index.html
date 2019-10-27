@@ -14,22 +14,18 @@
 
     <div id = "menu" class="container">
       <h2>menu</h2>
-      <div id = "stopwatch" type = "button">
-        00:00:00
-      </div>
-      <div id="restart-btn" type="button">
-        RESTART
-      </div>
-      <div id="hint" type="button">
-        HINT
-      </div>
+      <div id = "stopwatch" type = "button">00:00:00</div>
+      <div id="restart-btn" type="button">RESTART</div>
+      <div id="hint" type="button">HINT</div>
+      <div id = "help" type="button">HELP</div>
       <div class="placeholder">
           placeholder
       </div>
+
     </div>
 
     <div class="container">
-      <div>
+      <div class="row">
         <div id="0" type="button" class="btn">
         </div>
         <div id="1" type="button" class="btn">
@@ -40,7 +36,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="row">
         <div id="4" type="button" class="btn">
         </div>
         <div id="5" type="button" class="btn">
@@ -51,7 +47,7 @@
         </div>
       </div>
 
-      <div>
+      <div class="row">
         <div id="8" type="button" class="btn">
         </div>
         <div id="9" type="button" class="btn">
@@ -75,6 +71,16 @@
       <div class="placeholder">
           placeholder
       </div>
+    </div>
+
+    <div id="description" class="hidden">
+      <p>You need to identify a set of 3 cards satisfying all of these conditions: </p>
+      <ol>
+        <li>They all have the same number or have three different numbers.</li>
+        <li>They all have the same shape or have three different shapes.</li>
+        <li>They all have the same fill or have three different fills.</li>
+        <li>They all have the same colour or have three different colours.</li>
+      </ol>
     </div>
 
 

@@ -3,14 +3,14 @@ var seconds = 0, minutes = 0, hours = 0;
 var t;
 var stopwatch = document.getElementById('stopwatch');
 
-/*add effect for selected card*/
+/*select a card*/
 function selectCard(card) {
   $(card).addClass("pressed");
   playSound("pressed");
 
 }
 
-/*remove effect for selected card*/
+/*unselect a card*/
 function unselectCard(card) {
   $(card).removeClass("pressed");
   playSound("cancel");
@@ -66,6 +66,14 @@ function generateCards() {
     });
   });
   return  _.shuffle(cards);
+}
+
+/*find a card*/
+function findCard(card) {
+
+    let card_img = 'images/' + card.number + '_' + card.shape + '_' + card.fill + '_' + card.color + '.png';
+    return card_img;
+
 }
 
 /*fill the board with 12 cards*/
@@ -139,9 +147,9 @@ function replaceThree(board, deck, selection) {
   let i2 = parseInt(selection[1], 10);
   let i3 = parseInt(selection[2], 10);
 
-  let old1 = 'images/' + board[i1].number + '_' + board[i1].shape + '_' + board[i1].fill + '_' + board[i1].color + '.png';
-  let old2 = 'images/' + board[i2].number + '_' + board[i2].shape + '_' + board[i2].fill + '_' + board[i2].color + '.png';
-  let old3 = 'images/' + board[i3].number + '_' + board[i3].shape + '_' + board[i3].fill + '_' + board[i3].color + '.png';
+  let old1 = findCard(board[i1]);
+  let old2 = findCard(board[i2]);
+  let old3 = findCard(board[i3]);
 
   $("img[src='" + old1 + "']").parent().removeClass("pressed");
   $("img[src='" + old2 + "']").parent().removeClass("pressed");
@@ -157,9 +165,9 @@ function replaceThree(board, deck, selection) {
     board[i2] = card2;
     board[i3] = card3;
 
-    let new1 = 'images/' + card1.number + '_' + card1.shape + '_' + card1.fill + '_' + card1.color + '.png';
-    let new2 = 'images/' + card2.number + '_' + card2.shape + '_' + card2.fill + '_' + card2.color + '.png';
-    let new3 = 'images/' + card3.number + '_' + card3.shape + '_' + card3.fill + '_' + card3.color + '.png';
+    let new1 = findCard(card1);
+    let new2 = findCard(card2);
+    let new3 = findCard(card3);
 
     $("img[src='" + old1 + "']").attr("src", new1);
     $("img[src='" + old2 + "']").attr("src", new2);
@@ -185,7 +193,6 @@ function hint(board) {
       for(var k = j + 1; k < board.length; k++) {
           hint_arr.push(i.toString(), j.toString(), k.toString());
           if(isSet(hint_arr, board)) {
-            //$("#"+i).effect( "shake", {times:4}, 1000 );
             return hint_arr;
           }
           hint_arr = [];
@@ -226,6 +233,11 @@ function playSound(sound) {
     case "hint":
       var hint = new Audio("sounds/hint.mp3");
       hint.play();
+      break;
+
+    case "help":
+      var help = new Audio("sounds/help.mp3");
+      help.play();
       break;
 
     default:

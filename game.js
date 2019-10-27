@@ -39,9 +39,9 @@ $("#hint").click(function() {
 
   if(hint_arr.length > 0) {
 
-    let card1 = 'images/' + board[parseInt(hint_arr[0], 10)].number + '_' + board[parseInt(hint_arr[0], 10)].shape + '_' + board[parseInt(hint_arr[0], 10)].fill + '_' + board[parseInt(hint_arr[0], 10)].color + '.png';
-    let card2 = 'images/' + board[parseInt(hint_arr[1], 10)].number + '_' + board[parseInt(hint_arr[1], 10)].shape + '_' + board[parseInt(hint_arr[1], 10)].fill + '_' + board[parseInt(hint_arr[1], 10)].color + '.png';
-    let card3 = 'images/' + board[parseInt(hint_arr[2], 10)].number + '_' + board[parseInt(hint_arr[2], 10)].shape + '_' + board[parseInt(hint_arr[2], 10)].fill + '_' + board[parseInt(hint_arr[2], 10)].color + '.png';
+    let card1 = findCard(board[parseInt(hint_arr[0], 10)]);
+    let card2 = findCard(board[parseInt(hint_arr[1], 10)]);
+    let card3 = findCard(board[parseInt(hint_arr[2], 10)]);
 
     $("img[src='" + card1 + "']").parent().toggleClass("hint");
     $("img[src='" + card2 + "']").parent().toggleClass("hint");
@@ -83,6 +83,17 @@ $("#hint").click(function() {
   // console.log(selection);
 });
 
+$("#help").click(function() {
+  playSound("help");
+  if($("#description").hasClass("hidden")) {
+    $("#description").removeClass("hidden");
+  }
+  else {
+    $("#description").fadeToggle("slow");
+  }
+
+});
+
 $(".btn").click(function() {
   //get the card attributes
   let selectedCard = $(this).find("img").attr("src");
@@ -120,5 +131,5 @@ $(".btn").click(function() {
       $(".pressed").removeClass("pressed");
     }
   }
-  
+
 });
