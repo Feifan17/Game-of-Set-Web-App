@@ -6,6 +6,7 @@ var selection = [];
 var score = 0;
 fillBoard(board, deck);
 var remain = deck.length;
+startStopwatch();
 /* for debugging */
 // console.log(deck);
 // console.log(board);
@@ -13,6 +14,8 @@ var remain = deck.length;
 
 $("#restart-btn").click(function() {
   playSound("restart");
+  clearStopwatch();
+  startStopwatch();
   $(".pressed").removeClass("pressed");
   score = 0;
   document.getElementById('score').innerHTML= score;
@@ -22,8 +25,6 @@ $("#restart-btn").click(function() {
   resetBoard(board, deck);
   remain = deck.length;
   document.getElementById('remain').innerHTML= remain;
-  // clearStopwatch();
-  // startStopwatch();
   /* for debugging */
   // console.log(score);
   // console.log(deck);
@@ -67,6 +68,7 @@ $("#hint").click(function() {
     }
     else {
       alert("Game over!!");
+      pauseStopwatch();
       score = 0;
       document.getElementById('score').innerHTML= score;
       deck = generateCards();
