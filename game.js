@@ -68,7 +68,8 @@ $("#hint").click(function() {
     }
     else {
       alert("Game over!!");
-      pauseStopwatch();
+      clearStopwatch();
+      startStopwatch();
       score = 0;
       document.getElementById('score').innerHTML= score;
       deck = generateCards();
