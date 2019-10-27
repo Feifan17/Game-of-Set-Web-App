@@ -7,6 +7,12 @@
 ## Overview
 In this project, the Code Fellas team redesigned the [Game of Set](https://github.com/cse3901-2019au-1020/proj2-code) using Javascript. The project runs on a single webpage.
 
+## Additional Features
+* Graphical User Interface
+* Hint Generator
+* Sound Effect
+* Timer
+
 ## Instructions
 
 ### To Run the Game:
@@ -34,3 +40,18 @@ In this project, the Code Fellas team redesigned the [Game of Set](https://githu
 * Feifan Lin
 * Dana Shkokani
 * Mengying Xie
+
+## References
+Sound effects obtained from https://www.zapsplat.com:
+Right: Game sound, climbing mallet, ascend 5
+Wrong: Classic game sound, one up, rising, positive. Version 3
+Pressed: Game tone, sci-fi, button, select or menu sound 1
+cancel: Game, menu item select 3
+Restart: Warm, soft digital game tone with a positive feel, could be used for selection noise
+50
+Hint: Warm, soft digital game tone with a positive feel, could be used for selection noise 46
+Help: Game sound, collect single coin 10
+
+Images reference:
+[yellow X](https://en.wikipedia.org/wiki/File:Yellow_x.svg)
+[card images](https://geekandsundry.com/the-card-game-that-puzzled-mathematicians-for-decades/)
