@@ -1,5 +1,4 @@
-# Project 5
-## The Game of Set, Reloaded
+# The Game of Set Web App
 
 
 ***
