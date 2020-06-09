@@ -1,7 +1,5 @@
 # The Game of Set Web App
 
-***
-
 ## Overview
 
 Set is a real-time card game designed by Marsha Falco in 1974 and published by Set Enterprises in 1991. The deck consists of 81 unique cards that vary in four features across three possibilities for each kind of feature: number of shapes (one, two, or three), shape (diamond, squiggle, oval), shading (solid, striped, or open), and color (red, green, or purple). Each possible combination of features (e.g. a card with [three] [striped] [green] [diamonds]) appears as a card precisely once in the deck. 
@@ -55,8 +53,6 @@ The game starts from 12 cards. Each card has 4 attributes. Each attribute has 3 
 * Clicking on the "HINT" button will give a clue of possible set of cards. If there is no existing set on board, all cards will be put back to the deck and shuffle.
 
 * Clicking on the "HELP" button to check the rules of the game.
-
-***
 
 ## Developers:
 * Bowen Li
