@@ -1,18 +1,17 @@
 # The Game of Set Web App
 
-
 ***
 
 ## Overview
-In this project, the Code Fellas team redesigned the [Game of Set](https://github.com/cse3901-2019au-1020/proj2-code) using Javascript. The project runs on a single webpage.
 
-## Additional Features
-* Graphical User Interface
-* Hint Generator
-* Sound Effect
-* Timer
+Set is a real-time card game designed by Marsha Falco in 1974 and published by Set Enterprises in 1991. The deck consists of 81 unique cards that vary in four features across three possibilities for each kind of feature: number of shapes (one, two, or three), shape (diamond, squiggle, oval), shading (solid, striped, or open), and color (red, green, or purple). Each possible combination of features (e.g. a card with [three] [striped] [green] [diamonds]) appears as a card precisely once in the deck. 
+
+This project uses HTML, CSS and JavaScript to present this game through a web application format. You can access the game through the following link:
+
+[https://feifan17.github.io/Game-of-Set-Web-App/](https://feifan17.github.io/Game-of-Set-Web-App/)
 
 ## Game Rules
+
 The game starts from 12 cards. Each card has 4 attributes. Each attribute has 3 values:
 
     Number:     1           2           3
@@ -43,14 +42,8 @@ The game starts from 12 cards. Each card has 4 attributes. Each attribute has 3 
     2     green   solid     diamond
     3     green   empty     diamond
 
-## Instructions
+## Instructions for playing the game
 
-### To Run the Game:
-1. Clone the git repository into local machine.
-
-2. Open file 'index.html' with any web browser.
-
-### To Play the Game:
 * Click on a card to add it to your selection. After you select three cards, the game will tell you whether they are a set. Re-click the card to unselect.
 
 * After you successfully identify a set, the three cards in your selection will be removed, and the game will automatically add three new cards shuffled from the deck. Your score and number of cards remaining will be updated, and are kept on the right.
